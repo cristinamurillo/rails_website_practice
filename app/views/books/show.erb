@@ -6,10 +6,15 @@
 <% @book.authors.each do |author| %>
   <li>
   <%= link_to author.name, author %> (b. <%=author.birth_year%>)
-  <%= button_to "Remove author", author, method: :delete %>
+
+  <%= form_for(@book) do |f| %>
+    <%= f.label "#{author.name}" %>
+    <%= f.submit "Remove author" %>
+  <% end %>
   </li>
 <% end %>
 </ul>
+
 
 Author
 <%= form_for(@book) do |f| %>

@@ -9,11 +9,12 @@ class BooksController < ApplicationController
   end
 
   def update
+    byebug
     @book = Book.find(params[:id])
     author = Author.find(params[:book][:authors])
     @book.authors << author
 
-    redirect_to @book 
+    redirect_to @book
   end
 
   def destroy
