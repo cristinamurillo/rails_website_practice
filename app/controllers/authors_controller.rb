@@ -29,13 +29,20 @@ class AuthorsController < ApplicationController
 
   def update
     @author = Author.find(params[:id])
-    @author.update(author_params)
+    if params[:commit] == "Remove author"
+      @book = Book.find(params[:author][:book_ids])
+      @author.books.delete(@book)
+      redirect_to book_path(@book)
+      
+    else 
+      @author.update(author_params)
 
-    if @author.valid?
-      redirect_to author_path(@author)
-    else
-      render :edit
-    end
+      if @author.valid?
+        redirect_to author_path(@author)
+      else
+        render :edit
+      end
+    end 
   end
 
   def destroy

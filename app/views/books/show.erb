@@ -5,10 +5,10 @@
 
 <% @book.authors.each do |author| %>
   <li>
-  <%= link_to author.name, author %> (b. <%=author.birth_year%>)
-
-  <%= form_for(@book) do |f| %>
-    <%= f.label "#{author.name}" %>
+  <%= form_for(author) do |f| %>
+    <%= f.label :name, (link_to "#{author.name} (b.#{author.birth_year})", author) %> 
+    <%= f.hidden_field :book_ids %>
+    <%= hidden_field_tag @book %>
     <%= f.submit "Remove author" %>
   <% end %>
   </li>
