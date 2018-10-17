@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authors</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <br>
+    1. <%=link_to "Authors Index", authors_path%> <br>
+    2. <%=link_to "Books Index", books_path%><br><br>
+    <hr>
+
+    <%= yield %>
+  </body>
+</html>
